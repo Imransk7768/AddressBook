@@ -68,5 +68,58 @@ namespace AddressBookProgram
                 Console.WriteLine("\n");
             }
         }
+        public void EditContact()
+        {
+            foreach (Contacts contact in addressBook)
+            {
+                Console.WriteLine("Enter FirstName to Edit : ");
+                string name = Console.ReadLine();
+                if (contact.FirstName.Equals(name))
+                {
+                    Console.WriteLine("Edit a Contact Of \n1. LastName\n2. Address\n3. Email\n4. PhoneNumber\n5. City\n6. State\n7. ZipCode\n");
+                    int option = Convert.ToInt32(Console.ReadLine());
+                    switch (option)
+                    {
+                        case 1:
+                            Console.WriteLine("enter the last name you want to edit : ");
+                            contact.LastName = Console.ReadLine();
+                            break;
+                        case 2:
+                            Console.WriteLine("enter the address you want to edit :");
+                            contact.Address = Console.ReadLine();
+                            break;
+                        case 3:
+                            Console.WriteLine("enter the city: ");
+                            contact.City = Console.ReadLine();
+                            break;
+                        case 4:
+                            Console.WriteLine("enter the state you want to edit :");
+                            contact.State = Console.ReadLine();
+                            break;
+                        case 5:
+                            Console.WriteLine("enter the email you want to edit :");
+                            contact.Email = Console.ReadLine();
+                            break;
+                        case 6:
+                            Console.WriteLine("enter the zip you want to edit :");
+                            contact.ZipCode = Convert.ToInt32(Console.ReadLine());
+                            break;
+                        case 7:
+                            Console.WriteLine("enter the phone you want to edit :");
+                            contact.Mobile = Convert.ToInt64(Console.ReadLine());
+                            break;
+                        default:
+                            Console.WriteLine("Choose the right option : ");
+                            break;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Contact doesn't Exist.");
+                }
+                Display();
+            }
+
+        }
     }
 }
