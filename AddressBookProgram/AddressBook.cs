@@ -9,6 +9,7 @@ namespace AddressBookProgram
     public class AddressBook
     {
         List<Contacts> addressBook = new List<Contacts>();
+        Dictionary<string, List<Contacts>> dictName = new Dictionary<string, List<Contacts>>();
         Contacts contact = new Contacts();
         public AddressBook()
         {
@@ -56,6 +57,10 @@ namespace AddressBookProgram
             contact.State = Console.ReadLine();
             Console.WriteLine("Enter Your Zip Code: ");
             contact.ZipCode = Convert.ToInt32(Console.ReadLine());
+            addressBook.Add(contact);
+        }
+        public void addContact(Contacts contact)
+        {
             addressBook.Add(contact);
         }
         public void Display()
@@ -147,6 +152,44 @@ namespace AddressBookProgram
                 numCon--;
             }
             Display();
+        }
+        public void AddDictionary(string name)
+        {
+            if (dictName == null)
+            {
+                dictName.Add(name, addressBook);
+            }
+            if (NameExists(name) == false)
+            {
+                dictName.Add(name, addressBook);
+            }
+            Display();
+        }
+        public void displayDictionaryData()
+        {
+            Console.WriteLine(dictName);
+        }
+        public void EditingDictionary(string name, string contactName)
+        {
+            foreach (var data in dictName)
+            {
+                if (dictName.Keys.Equals(name))
+                {
+                    addressBook = data.Value;
+                }
+                EditContact();
+            }
+        }
+        public bool NameExists(string name)
+        {
+            foreach (var data in dictName.Keys)
+            {
+                if (data.Equals(name))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
