@@ -12,7 +12,7 @@ namespace AddressBookProgram
         public string LastName { get; set; }
         public string Address { get; set; }
         public string Email { get; set; }
-        public int Mobile { get; set; }
+        public long Mobile { get; set; }
         public string City { get; set; }
         public string State { get; set; }
         public int ZipCode { get; set; }
