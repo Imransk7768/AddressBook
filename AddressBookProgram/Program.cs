@@ -1,2 +1,16 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine(">>>>>  Welcome to ADDRESS-BOOK Detaiils.");
+﻿using System;
+
+namespace AddressBookProgram
+{
+    class program
+    {
+        public static void Main(string[] args)
+        {
+
+            Console.WriteLine(">>>>>  Welcome to ADDRESS-BOOK Detaiils.");
+            AddressBook book = new AddressBook();
+            book.AddContacts();
+            book.Display();
+        }
+    }
+}
