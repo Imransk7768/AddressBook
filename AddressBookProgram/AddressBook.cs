@@ -136,5 +136,17 @@ namespace AddressBookProgram
             addressBook.Remove(delete);
             Display();
         }
+        public void AddMultipleContacts()
+        {
+            Console.WriteLine("Enter The Number Of Contacts To Be Added: ");
+            int numCon = Convert.ToInt32(Console.ReadLine());
+            
+            while (numCon > 0)
+            {
+                CreateContact();
+                numCon--;
+            }
+            Display();
+        }
     }
 }
