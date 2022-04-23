@@ -74,12 +74,12 @@ namespace AddressBookProgram
                 Console.WriteLine("\n");
             }
         }
-        public void EditContact()
+        public void EditContact(string name)
         {
-            foreach (Contacts contact in addressBook)
+            foreach (var contact in addressBook)
             {
-                Console.WriteLine("Enter FirstName to Edit : ");
-                string name = Console.ReadLine();
+                //Console.WriteLine("Enter FirstName to Edit : ");
+                //string name = Console.ReadLine();
                 if (contact.FirstName.Equals(name))
                 {
                     Console.WriteLine("Edit a Contact Of \n1. LastName\n2. Address\n3. Email\n4. PhoneNumber\n5. City\n6. State\n7. ZipCode\n");
@@ -119,10 +119,10 @@ namespace AddressBookProgram
                             break;
                     }
                 }
-                else
+                /*else
                 {
                     Console.WriteLine("Contact doesn't Exist.");
-                }
+                }*/
             }
             Display();
         }
@@ -165,20 +165,28 @@ namespace AddressBookProgram
             }
             Display();
         }
-        public void displayDictionaryData()
+        public void displayDictionaryData(string name)
         {
-            Console.WriteLine(dictName);
+            foreach (var data in dictName)
+            {
+                if (data.Key.Equals(name))
+                {
+                    addressBook = data.Value;
+                }
+                Console.WriteLine(dictName);
+            }
         }
         public void EditingDictionary(string name, string contactName)
         {
             foreach (var data in dictName)
             {
-                if (dictName.Keys.Equals(name))
+                if (data.Key.Equals(name))
                 {
                     addressBook = data.Value;
                 }
-                EditContact();
             }
+            EditContact(contactName);
+            Display();
         }
         public bool NameExists(string name)
         {

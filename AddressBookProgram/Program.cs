@@ -9,7 +9,7 @@ namespace AddressBookProgram
             Console.WriteLine(">>>>>  WelCome To Address-Book Details  <<<<<");
             bool end = true;
             Console.WriteLine("\nSelectNumber\n1. Add Contact\n2. Display\n3. EditContact\n4. DeleteContact\n5. Add Multiple Contacts\n" +
-                "6. Add Data in Dictionary\n 7. Edit data in Dictionary\n8. Display Dictionary info\n9. End Of Program");
+                "6. Add Data in Dictionary\n7. Edit data in Dictionary\n8. Display Dictionary info\n9. End Of Program");
             Contacts contact = new Contacts();
             AddressBook con = new AddressBook();
             while (end)
@@ -25,7 +25,8 @@ namespace AddressBookProgram
                         con.Display();
                         break;
                     case 3:
-                        con.EditContact();
+                        string name = Console.ReadLine();
+                        con.EditContact(name);
                         break;
                     case 4:
                         con.DeleteContact();
@@ -46,7 +47,8 @@ namespace AddressBookProgram
                         break;
                     case 8:
                         Console.Write("Enter the Name for Display data in Dictionary : ");
-                        con.displayDictionaryData();
+                        string dictionary = Console.ReadLine();
+                        con.displayDictionaryData(dictionary);
                         break;
                     case 9:
                         end = false;
