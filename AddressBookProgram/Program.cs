@@ -9,12 +9,12 @@ namespace AddressBookProgram
             Console.WriteLine(">>>>>  WelCome To Address-Book Details  <<<<<");
             bool end = true;
             Console.WriteLine("\nSelectNumber\n1. Add Contact\n2. Display\n3. EditContact\n4. DeleteContact\n5. Add Multiple Contacts\n" +
-                "6. Add Data in Dictionary\n7. Edit data in Dictionary\n8. Display Dictionary info\n9. End Of Program");
+                "6. Add Data in Dictionary\n7. Edit data in Dictionary\n8. Display Dictionary info\n9. Duplicate Contact Check\n10. End Of Program");
             Contacts contact = new Contacts();
             AddressBook con = new AddressBook();
             while (end)
             {
-                Console.WriteLine("\nChoose Option to Execute Program : ");
+                Console.Write("\nChoose Option to Execute Program : ");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -51,6 +51,11 @@ namespace AddressBookProgram
                         con.displayDictionaryData(dictionary);
                         break;
                     case 9:
+                        Console.Write("Enter the FirstName for Check Duplicate Contact in Dictionary : ");
+                        string firstName = Console.ReadLine();
+                        con.CheckDuplicateContact(firstName);
+                        break;
+                    case 10:
                         end = false;
                         Console.WriteLine("Program Is Ended");
                         break;

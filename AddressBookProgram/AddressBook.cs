@@ -41,23 +41,39 @@ namespace AddressBookProgram
         public void CreateContact()
         {
             
-            Console.WriteLine("Enter Your First: ");
+            Console.Write("Enter Your First: ");
             contact.FirstName = Console.ReadLine();
-            Console.WriteLine("Enter Your Last Name: ");
+            Console.Write("Enter Your Last Name: ");
             contact.LastName = Console.ReadLine();
-            Console.WriteLine("Enter Your Address: ");
+            Console.Write("Enter Your Address: ");
             contact.Address = Console.ReadLine();
-            Console.WriteLine("Enter Your Email Id: ");
+            Console.Write("Enter Your Email Id: ");
             contact.Email = Console.ReadLine();
-            Console.WriteLine("Enter Your PhoneNumber: ");
+            Console.Write("Enter Your PhoneNumber: ");
             contact.Mobile = Convert.ToInt64(Console.ReadLine());
-            Console.WriteLine("Enter Your City: ");
+            Console.Write("Enter Your City: ");
             contact.City = Console.ReadLine();
-            Console.WriteLine("Enter Your State: ");
+            Console.Write("Enter Your State: ");
             contact.State = Console.ReadLine();
-            Console.WriteLine("Enter Your Zip Code: ");
+            Console.Write("Enter Your Zip Code: ");
             contact.ZipCode = Convert.ToInt32(Console.ReadLine());
             addressBook.Add(contact);
+        }
+        public void CheckDuplicateContact(string firstName)
+        {
+            foreach(Contacts contact in addressBook)
+            {
+                if (contact.FirstName == firstName)
+                {
+                    Console.WriteLine("Name is Already Present, Please Enter Different Name.\n");
+                    Console.WriteLine("Enter New Contact Details.");
+                    CreateContact();
+                }
+                else
+                {
+                    Display();
+                }
+            }
         }
         public void addContact(Contacts contact)
         {
