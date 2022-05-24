@@ -9,7 +9,7 @@ namespace AddressBookProgram
             Console.WriteLine(">>>>>  WelCome To Address-Book Details  <<<<<");
             bool end = true;
             Console.WriteLine("\nSelectNumber\n1. Add Contact\n2. Display\n3. EditContact\n4. DeleteContact\n5. Add Multiple Contacts\n" +
-                "6. Add Data in Dictionary\n7. Edit data in Dictionary\n8. Display Dictionary info\n9. Duplicate Contact Check\n10. End Of Program");
+                "6. Add Data in Dictionary\n7. Edit data in Dictionary\n8. Display Dictionary info\n9. Duplicate Contact Check\n10. Search Through City.");
             Contacts contact = new Contacts();
             AddressBook con = new AddressBook();
             while (end)
@@ -56,11 +56,13 @@ namespace AddressBookProgram
                         con.CheckDuplicateContact(firstName);
                         break;
                     case 10:
-                        end = false;
-                        Console.WriteLine("Program Is Ended");
+                        Console.Write("Search Contact through City: ");
+                        string cityName = Console.ReadLine();
+                        con.SearchPersonCity(cityName);
                         break;
                     default:
-                        Console.WriteLine("Execution Ends.");
+                        end = false;
+                        Console.WriteLine("Program Is Ended");
                         break;
                 }
             }

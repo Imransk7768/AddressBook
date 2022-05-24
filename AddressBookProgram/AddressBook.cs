@@ -215,5 +215,17 @@ namespace AddressBookProgram
             }
             return false;
         }
+        public void SearchPersonCity(string cityName)
+        {
+            Console.Write("Contact Details Search by City '{0}' : ", cityName);
+            foreach (var data in addressBook)
+            {
+                if (data.City.Equals(cityName))
+                {
+                    Console.WriteLine(data.FirstName + ", " + data.LastName + ", " + data.Email + ", " + data.Mobile + 
+                        ", " + data.City + ", " + data.State + ", " + data.ZipCode);
+                }
+            }
+        }
     }
 }
