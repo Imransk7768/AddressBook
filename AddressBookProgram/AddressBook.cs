@@ -90,6 +90,17 @@ namespace AddressBookProgram
                 Console.WriteLine("\n");
             }
         }
+        public void ViewPersonByCity(string city)
+        {
+            foreach (var con in addressBook)
+            {
+                if (con.City.Equals(city))
+                {
+                    Console.WriteLine(con.FirstName + ", " + con.LastName + ", " + con.Email + ", " + con.Mobile +
+                        ", " + con.City + ", " + con.State + ", " + con.ZipCode);
+                }
+            }
+        }
         public void EditContact(string name)
         {
             foreach (var contact in addressBook)

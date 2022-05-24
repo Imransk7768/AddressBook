@@ -60,6 +60,11 @@ namespace AddressBookProgram
                         string cityName = Console.ReadLine();
                         con.SearchPersonCity(cityName);
                         break;
+                    case 11:
+                        Console.Write("View Person By CityName : ");
+                        string citi = Console.ReadLine();
+                        con.ViewPersonByCity(citi);
+                        break;
                     default:
                         end = false;
                         Console.WriteLine("Program Is Ended");
