@@ -44,8 +44,8 @@ namespace AddressBookProgram
                 Email = "ramesh123@gmail.com",
                 Mobile = 9001234566,
                 City = "kurnool",
-                State = "Ap",
-                ZipCode = 523432
+                State = "AP",
+                ZipCode = 523433
             };
             addressBook.Add(contact1);
             addressBook.Add(contact2);
@@ -289,6 +289,21 @@ namespace AddressBookProgram
             foreach (string name in SortedByAlphabet)
             {
                 Console.WriteLine(name);
+            }
+        }
+        public void SortNameByCityStateZip()
+        {
+            List<string> SortedByZip = new List<string>();
+            foreach (Contacts contact in addressBook)
+            {
+                string data1=null;
+                if(data1 == contact.City.ToString() || data1 == contact.City || data1 == contact.State)
+                SortedByZip.Add(data1);
+            }
+            SortedByZip.Sort();
+            foreach (var data in addressBook)
+            {
+                Console.WriteLine(data.FirstName + ", " + data.LastName + ", " + data.City + ", " + data.State + ", " + data.ZipCode);
             }
         }
     }
