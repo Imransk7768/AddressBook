@@ -257,5 +257,25 @@ namespace AddressBookProgram
                 Console.WriteLine("Enter City/State Name That Present in List.");
             }
         }
+        public void CountByCity()
+        {
+            int count = 0;
+            Console.Write("Count By City|State : ");
+            string cityNames = Console.ReadLine();
+            var obj = addressBook.FindAll(x => x.City == cityNames || x.State == cityNames);
+            if (obj.Count > 0)
+            {
+                foreach (var data in obj)
+                {
+                    count++;
+                }
+                Console.Write("Total Person are :", +obj.Count);
+                Console.Write(count);
+            }
+            else
+            {
+                Console.WriteLine("Enter City/State Name That Present in List.;");
+            }
+        }
     }
 }
