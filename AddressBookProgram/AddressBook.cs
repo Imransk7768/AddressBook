@@ -277,5 +277,19 @@ namespace AddressBookProgram
                 Console.WriteLine("Enter City/State Name That Present in List.;");
             }
         }
+        public void SortNameByAlphabeticalOrder()
+        {
+            List<string> SortedByAlphabet = new List<string>();
+            foreach (Contacts contact in addressBook)
+            {
+                string name = contact.FirstName.ToString();
+                SortedByAlphabet.Add(name);
+            }
+            SortedByAlphabet.Sort();
+            foreach (string name in SortedByAlphabet)
+            {
+                Console.WriteLine(name);
+            }
+        }
     }
 }
