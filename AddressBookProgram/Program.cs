@@ -9,7 +9,7 @@ namespace AddressBookProgram
             Console.WriteLine(">>>>>  WelCome To Address-Book Details  <<<<<");
             bool end = true;
             Console.WriteLine("\nSelectNumber\n1. Add Contact\n2. Display\n3. EditContact\n4. DeleteContact\n5. Add Multiple Contacts\n" +
-                "6. Add Data in Dictionary\n7. Edit data in Dictionary\n8. Display Dictionary info\n9. Duplicate Contact Check\n10. Search Through City.");
+                "6. Add Data in Dictionary\n7. Edit data in Dictionary\n8. Display Dictionary info\n9. Duplicate Contact Check\n10. Search Through City\n11. View By City/State.");
             Contacts contact = new Contacts();
             AddressBook con = new AddressBook();
             while (end)
@@ -61,9 +61,7 @@ namespace AddressBookProgram
                         con.SearchPersonCity(cityName);
                         break;
                     case 11:
-                        Console.Write("View Person By CityName : ");
-                        string citi = Console.ReadLine();
-                        con.ViewPersonByCity(citi);
+                        con.ViewPersonByCity();
                         break;
                     default:
                         end = false;

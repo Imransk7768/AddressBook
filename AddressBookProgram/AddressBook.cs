@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace AddressBookProgram
@@ -35,12 +36,24 @@ namespace AddressBookProgram
                 State = "Ap",
                 ZipCode = 523432
             };
+            Contacts contact3 = new Contacts()
+            {
+                FirstName = "Ramesh",
+                LastName = "Sharma",
+                Address = "SR nagar",
+                Email = "ramesh123@gmail.com",
+                Mobile = 9001234566,
+                City = "kurnool",
+                State = "Ap",
+                ZipCode = 523432
+            };
             addressBook.Add(contact1);
             addressBook.Add(contact2);
+            addressBook.Add(contact3);
         }
         public void CreateContact()
         {
-            
+
             Console.Write("Enter Your First: ");
             contact.FirstName = Console.ReadLine();
             Console.Write("Enter Your Last Name: ");
@@ -61,7 +74,7 @@ namespace AddressBookProgram
         }
         public void CheckDuplicateContact(string firstName)
         {
-            foreach(Contacts contact in addressBook)
+            foreach (Contacts contact in addressBook)
             {
                 if (contact.FirstName == firstName)
                 {
@@ -88,17 +101,6 @@ namespace AddressBookProgram
                     "\nAddress : " + contact.Address + "\nEmail : " + contact.Email + "\nPhone : " + contact.Mobile +
                     "\nCity :" + contact.City + "\nState : " + contact.State + "\nZipCode : " + contact.ZipCode);
                 Console.WriteLine("\n");
-            }
-        }
-        public void ViewPersonByCity(string city)
-        {
-            foreach (var con in addressBook)
-            {
-                if (con.City.Equals(city))
-                {
-                    Console.WriteLine(con.FirstName + ", " + con.LastName + ", " + con.Email + ", " + con.Mobile +
-                        ", " + con.City + ", " + con.State + ", " + con.ZipCode);
-                }
             }
         }
         public void EditContact(string name)
@@ -172,7 +174,7 @@ namespace AddressBookProgram
         {
             Console.WriteLine("Enter The Number Of Contacts To Be Added: ");
             int numCon = Convert.ToInt32(Console.ReadLine());
-            
+
             while (numCon > 0)
             {
                 CreateContact();
@@ -231,11 +233,28 @@ namespace AddressBookProgram
             Console.Write("Contact Details Search by City '{0}' : ", cityName);
             foreach (var data in addressBook)
             {
-                if (data.City.Equals(cityName))
+                if (data.City.Contains(cityName))
                 {
-                    Console.WriteLine(data.FirstName + ", " + data.LastName + ", " + data.Email + ", " + data.Mobile + 
+                    Console.WriteLine(data.FirstName + ", " + data.LastName + ", " + data.Email + ", " + data.Mobile +
                         ", " + data.City + ", " + data.State + ", " + data.ZipCode);
                 }
+            }
+        }
+        public void ViewPersonByCity()
+        {
+            Console.Write("View By City/State : ");
+            string cityNames = Console.ReadLine();
+            var obj = addressBook.FindAll(x => x.City == cityNames || x.State == cityNames);
+            if (obj.Count > 0)
+            {
+                foreach (var data in obj)
+                {
+                    Console.WriteLine(data.FirstName + ", " + data.City + ", " + data.State);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Enter City/State Name That Present in List.");
             }
         }
     }
