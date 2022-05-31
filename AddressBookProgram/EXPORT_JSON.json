@@ -1,0 +1,22 @@
+[
+  {
+    "FirstName": "Rehan",
+    "LastName": "Shaik",
+    "Email": "rehanshaik007@gmail.com",
+    "Mobile": "+91 9012345678",
+    "Address":  "Kukatpally",
+    "City": "kurnool",
+    "State": "AndhraPradesh",
+    "Code": "523331"
+  },
+  {
+    "FirstName": "Tony",
+    "LastName": "Stark",
+    "Email": "tonystark001@gmail.com",
+    "Mobile": "+1 90011223344",
+    "Address": "Ameerpet",
+    "City": "Timesquare",
+    "State": "NewYork",
+    "Code": "234234"
+  }
+]
