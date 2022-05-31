@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Threading.Tasks;
+using CsvHelper;
+using System.Globalization;
 
 namespace AddressBookProgram
 {
@@ -12,7 +14,10 @@ namespace AddressBookProgram
         List<Contacts> addressBook = new List<Contacts>();
         Dictionary<string, List<Contacts>> dictName = new Dictionary<string, List<Contacts>>();
         Contacts contact = new Contacts();
+
         const string filePath = @"H:\Assignments\AddressBook\AddressBookProgram\ContactBook.txt";
+        const string IMPORT_CSV = @"H:\Assignments\AddressBook\AddressBookProgram\AddressBook.csv";
+        const string EXPORT_CSV = @"H:\Assignments\AddressBook\AddressBookProgram\AddressBookExport.csv";
         public AddressBook()
         {
             Contacts contact1 = new Contacts()
@@ -297,9 +302,9 @@ namespace AddressBookProgram
             List<string> SortedByZip = new List<string>();
             foreach (Contacts contact in addressBook)
             {
-                string data1=null;
-                if(data1 == contact.City.ToString() || data1 == contact.City || data1 == contact.State)
-                SortedByZip.Add(data1);
+                string data1 = null;
+                if (data1 == contact.City.ToString() || data1 == contact.City || data1 == contact.State)
+                    SortedByZip.Add(data1);
             }
             SortedByZip.Sort();
             foreach (var data in addressBook)
@@ -323,6 +328,29 @@ namespace AddressBookProgram
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
+                }
+            }
+        }
+        public void ReadAndWriteDataFromCSV()
+        {
+            using (var reader = new StreamReader(IMPORT_CSV))
+            {
+                using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                {
+                    var records = csv.GetRecords<Contacts>().ToList();
+                    Console.WriteLine("After Reading CSV File");
+                    foreach (var data in records)
+                    {
+                        Console.WriteLine(data.FirstName + ", " + data.LastName + ", " + data.Email + ", " + data.Mobile +
+                        ", " + data.City + ", " + data.State + ", " + data.ZipCode);
+                    }
+                    using (var writer = new StreamWriter(EXPORT_CSV))
+                    {
+                        using (var csvExport = new CsvWriter(writer, CultureInfo.InvariantCulture))
+                        {
+                            csvExport.WriteRecords(records);
+                        }
+                    }
                 }
             }
         }
