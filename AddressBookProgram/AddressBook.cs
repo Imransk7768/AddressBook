@@ -12,6 +12,7 @@ namespace AddressBookProgram
         List<Contacts> addressBook = new List<Contacts>();
         Dictionary<string, List<Contacts>> dictName = new Dictionary<string, List<Contacts>>();
         Contacts contact = new Contacts();
+        const string filePath = @"H:\Assignments\AddressBook\AddressBookProgram\ContactBook.txt";
         public AddressBook()
         {
             Contacts contact1 = new Contacts()
@@ -304,6 +305,25 @@ namespace AddressBookProgram
             foreach (var data in addressBook)
             {
                 Console.WriteLine(data.FirstName + ", " + data.LastName + ", " + data.City + ", " + data.State + ", " + data.ZipCode);
+            }
+        }
+        public void ReadingFileIO()
+        {
+            if (File.Exists(filePath))
+            {
+                StreamReader read = new StreamReader(filePath);
+                try
+                {
+                    string s = "";
+                    while ((s = read.ReadLine()) != null)
+                    {
+                        Console.WriteLine(s);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
     }
