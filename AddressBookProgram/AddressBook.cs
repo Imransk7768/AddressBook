@@ -7,11 +7,14 @@ using System.Threading.Tasks;
 using CsvHelper;
 using System.Globalization;
 using Newtonsoft.Json;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace AddressBookProgram
 {
     public class AddressBook
     {
+        public SqlConnection connect;
         List<Contacts> addressBook = new List<Contacts>();
         Dictionary<string, List<Contacts>> dictName = new Dictionary<string, List<Contacts>>();
         Contacts contact = new Contacts();
@@ -20,6 +23,12 @@ namespace AddressBookProgram
         const string IMPORT_CSV = @"H:\Assignments\AddressBook\AddressBookProgram\AddressBook.csv";
         const string EXPORT_CSV = @"H:\Assignments\AddressBook\AddressBookProgram\AddressBookExport.csv";
         const string EXPORT_JSON = @"H:\Assignments\AddressBook\AddressBookProgram\EXPORT_JSON.json";
+
+        public void Connection()
+        {
+            string connectingString = "Data Source=(localdb)\\MSSQLLocaldb;Initial Catalog=AddressBookServiceDB";
+            connect = new SqlConnection(connectingString);
+        }
         public AddressBook()
         {
             Contacts contact1 = new Contacts()
@@ -378,6 +387,22 @@ namespace AddressBookProgram
                         }
                     }
                 }
+            }
+        }
+        public void RetriveEntriesFromDB()
+        {
+            Connection();
+            SqlCommand command = new SqlCommand("spGetAllEntries", connect);
+            command.CommandType = CommandType.StoredProcedure;
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            DataTable dataTable = new DataTable();
+            connect.Open();
+            adapter.Fill(dataTable);
+            connect.Close();
+            foreach (DataRow data in dataTable.Rows)
+            {
+                Console.WriteLine(data["FirstName"] + ", " + data["LastName"] + ", " + data["Address"] + ", " + data["Mobile"] + ", " + data["Email"] 
+                    + ", " + data["City"] + ", " + data["State"] + ", " + data["ZipCode"] );
             }
         }
     }
