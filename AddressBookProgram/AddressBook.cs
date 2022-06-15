@@ -405,5 +405,32 @@ namespace AddressBookProgram
                     + ", " + data["City"] + ", " + data["State"] + ", " + data["ZipCode"] );
             }
         }
+        public void Update_EmpDetails(Contacts cont)
+        {
+            try
+            {
+                Connection();
+                SqlCommand cmd = new SqlCommand("spUpdateEmployee", connect);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@zipCode", cont.zipCode);
+                cmd.Parameters.AddWithValue("@City", cont.City);
+                cmd.Parameters.AddWithValue("@FitName", cont.FirstName);
+                connect.Open();
+                int result = cmd.ExecuteNonQuery();
+                connect.Close();
+                if (result != 0)
+                {
+                    Console.WriteLine("Updated Sucessfull");
+                }
+                else
+                {
+                    Console.WriteLine("Update Failed");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
 }

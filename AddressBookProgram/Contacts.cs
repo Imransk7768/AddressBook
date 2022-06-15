@@ -16,6 +16,7 @@ namespace AddressBookProgram
         public string City { get; set; }
         public string State { get; set; }
         public int ZipCode { get; set; }
+        public string zipCode { get; set; }
         //public override string ToString()
         //{
         //    return $"firstname:{FirstName} lastname:{LastName} address:{Address} email:{Email} mobile:{Mobile} city:{City} state:{State} zipcode:{ZipCode} ";

@@ -86,6 +86,13 @@ namespace AddressBookProgram
                     case 18:
                         con.RetriveEntriesFromDB();
                         break;
+                    case 19:
+                        Contacts update = new Contacts();
+                        update.City = "Vizag";
+                        update.zipCode = "523314";
+                        update.FirstName = "Rehan";
+                        con.Update_EmpDetails(update);
+                        break;
                     default:
                         end = false;
                         Console.WriteLine("Program Is Ended");
